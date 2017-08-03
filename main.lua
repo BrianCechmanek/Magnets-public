@@ -50,19 +50,19 @@ function love.keypressed(key)
   end
 
   if key == 'down' then
-    dy = 32
+    dy = 16
   end
 
   if key == 'up' then
-    dy = -32
+    dy = -16
   end
 
   if key == 'left' then
-    dx = -32
+    dx = -16
   end
 
   if key == 'right' then
-    dx = 32
+    dx = 16
   end
 end
 
