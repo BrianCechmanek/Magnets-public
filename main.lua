@@ -3,8 +3,8 @@
 local lg = love.graphics
 
 local Game = require 'Game'
-local Magnet = require('Magnet')
-local Ball = require('Ball')
+--local Magnet = require('Magnet')
+--local Ball = require('Ball')
 
 
 COLOUR_LIGHT_BLUE = {100, 149, 237}
@@ -20,33 +20,16 @@ local magnet
 local ball
 
 function love.load()
-<<<<<<< HEAD
   assets["magnet_img"] = lg.newImage('assets/magnet.png')
   assets["ball_img"] = lg.newImage('assets/ball.png')
-  --magnet = Magnet.create(32, 32, assets["magnet_img"])
-  ball = assets['ball_img']
   Game:start()
 end
 
-=======
-  assets["magnet_img"] = love.graphics.newImage('assets/magnet.png')
-  assets["ball_img"] = love.graphics.newImage('assets/ball.png')
-
-  magnet = Magnet.create(assets["magnet_img"], 32, 32)
-  ball = Ball.create(assets["ball_img"], 600, 360)
-end
->>>>>>> ec744411479af2cbd82cd394be1a738f1efe8bb0
 
 function love.draw()
   DrawBackground()
   DrawBorder()
-<<<<<<< HEAD
   Game:drawObjects()
-  lg.draw(ball, 600, 360)
-=======
-  magnet:draw()
-  ball:draw()
->>>>>>> ec744411479af2cbd82cd394be1a738f1efe8bb0
 end
 
 function love.update(dt)

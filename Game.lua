@@ -1,5 +1,5 @@
 local Magnet = require 'Magnet'
--- local Ball   = require 'Ball'
+local Ball   = require 'Ball'
 
 local Game = {}
 Game.__index = Game
@@ -23,12 +23,11 @@ Game.objects = {}
 function Game:start(level)
   local level   = level or DEFAULT_LEVEL
 
-  self.magnet   = Magnet.create(level.magnet_start.x, level.magnet_start.y, assets['magnet_img'])
-  --self.ball     = Ball.create(level.ball_start.x, level.ball_start.y, assets['ball_img'])
+  self.magnet   = Magnet.create(assets['magnet_img'], level.magnet_start.x, level.magnet_start.y)
+  self.ball     = Ball.create(assets['ball_img'], level.ball_start.x, level.ball_start.y)
   self.win_hole = level.win_hole
 
-  Game:add(self.magnet)
-  --Game:add(self.magnet, self.ball)
+  Game:add(self.magnet, self.ball)
 
   self.is_running = true
 end

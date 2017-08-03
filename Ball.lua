@@ -25,4 +25,7 @@ function Ball:move(dx, dy)
     self.y_pos = self.y_pos + dy
 end
 
+function Ball:update()
+end
+
 return Ball
