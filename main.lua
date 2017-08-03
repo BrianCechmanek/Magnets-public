@@ -9,7 +9,6 @@ COLOUR_LIGHT_BLUE = {100, 149, 237}
 COLOUR_GREY       = {119, 136, 153}
 
 SPRITE_SIZE = 64
-
 SCREEN_WIDTH  = 1200
 SCREEN_HEIGHT = 720
 
@@ -28,9 +27,11 @@ function love.draw()
   Game:drawObjects()
 end
 
+
 function love.update(dt)
   Game:update(dt)
 end
+
 
 function love.keypressed(key)
   if key == 'q' or key == 'escape' then
@@ -54,6 +55,7 @@ function love.keypressed(key)
   end
 end
 
+
 function love.keyreleased(key)
   if key == 'down' then
     Game.magnet.dy = 0
@@ -73,11 +75,11 @@ function love.keyreleased(key)
 end
 
 function DrawBackground()
-  lg.clear(COLOUR_LIGHT_BLUE)                    --function love.mousepressed(x, y, button, istouch)
-end                                                         --  if magnet:isNear(x, y) then
-                                                            --    magnet:grab()
-function DrawBorder()                                       --  end
-  lg.setLineWidth(10)                            --end
+  lg.clear(COLOUR_LIGHT_BLUE)
+end
+
+function DrawBorder()
+  lg.setLineWidth(10)
   lg.setColor(COLOUR_GREY)
   lg.rectangle('line', SPRITE_SIZE, SPRITE_SIZE, 
                           SCREEN_WIDTH  - (SPRITE_SIZE * 2),
