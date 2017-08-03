@@ -13,6 +13,8 @@ function Ball.create(img, x, y)
   ball.img = img
   ball.pos = Vector(x, y)
   ball.vel = Vector(0,0)
+
+  ball.is_solid = true
   --ball.gravity = 1
   return ball
 end
