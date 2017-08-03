@@ -1,10 +1,8 @@
 -- Magnet Game v.01
 -- Brian Cechmanek, David Bergeron
 
-mag_xpos = 32
-mag_ypos = 32
-dx = 0
-dy = 0
+local Magnet = require('Magnet')
+
 COLOUR_LIGHT_BLUE = {100, 149, 237}
 COLOUR_GREY       = {119, 136, 153}
 
@@ -12,6 +10,8 @@ SPRITE_SIZE = 64
 
 SCREEN_WIDTH  = 1200
 SCREEN_HEIGHT = 720
+
+local assets = {}
 
 function DrawBorder()
   love.graphics.setLineWidth(10)
@@ -22,25 +22,35 @@ function DrawBorder()
 end
 
 function love.load()
-  magnet = love.graphics.newImage('assets/magnet.png')
+  assets["magnet_img"] = love.graphics.newImage('assets/magnet.png')
+  print(assets.magnet_img)
+  print(table.getn(assets)) 
+  assets["ball_img"] = love.graphics.newImage('assets/ball.png')
+  -- magnet = love.graphics.newImage('assets/magnet.png')
   ball = love.graphics.newImage('assets/ball.png')
 end
+
+
+
+-- Game initialization here
+local magnet = Magnet.create(32, 32, assets["magnet_img"])
+
 
 function love.draw()
   love.graphics.clear(COLOUR_LIGHT_BLUE)
   DrawBorder()
-  love.graphics.draw(magnet, mag_xpos, mag_ypos)
+  magnet:draw()
   love.graphics.draw(ball, 600, 360)
 end
 
 function love.update(dt)
-  mag_xpos = mag_xpos + dx
-  if mag_xpos < 0 or mag_xpos > 1200 then
-     mag_xpos = mag_xpos % 1200
+  magnet.x_pos = magnet.x_pos + magnet.dx
+  if magnet.x_pos < 0 or magnet.x_pos > 1200 then
+     magnet.x_pos = magnet.x_pos % 1200
   end
-  mag_ypos = mag_ypos + dy
-  if mag_ypos < 0 or mag_ypos > 720 then
-     mag_ypos = mag_ypos % 720
+  magnet.y_pos = magnet.y_pos + magnet.dy
+  if magnet.y_pos < 0 or magnet.y_pos > 720 then
+     magnet.y_pos = magnet.y_pos % 720
   end
 end
 
@@ -50,37 +60,37 @@ function love.keypressed(key)
   end
 
   if key == 'down' then
-    dy = 16
+    magnet.dy = 16
   end
 
   if key == 'up' then
-    dy = -16
+    magnet.dy = -16
   end
 
   if key == 'left' then
-    dx = -16
+    magnet.dx = -16
   end
 
   if key == 'right' then
-    dx = 16
+    magnet.dx = 16
   end
 end
 
 function love.keyreleased(key)
   if key == 'down' then
-    dy = 0
+    magnet.dy = 0
   end
 
   if key == 'up' then
-    dy = 0
+    magnet.dy = 0
   end
 
   if key == 'left' then
-    dx = 0
+    magnet.dx = 0
   end
 
   if key == 'right' then
-    dx = 0
+    magnet.dx = 0
   end
 end
 
