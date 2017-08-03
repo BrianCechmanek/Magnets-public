@@ -20,10 +20,12 @@ Game.ball     = nil
 Game.win_hole = nil
 
 Game.objects = {}
+Game.forceAgents = {}
 
 function Game:start(level)
   local level   = level or DEFAULT_LEVEL
 
+  
   self.magnet   = Magnet.create(assets['magnet_img'], level.magnet_start.x, level.magnet_start.y)
   self.ball     = Ball.create(assets['ball_img'], level.ball_start.x, level.ball_start.y)
   self.win_hole = level.win_hole
@@ -53,6 +55,14 @@ function Game:add(...)
   for _, obj in ipairs(new_objs) do
     table.insert(self.objects, obj)
   end
+end
+
+function Game:setForce(name, value)
+  Game.forceAgents[name] = value
+end
+
+function Game:removeForce(name)
+  Game.forceAgents[name] = nil
 end
 
 return Game
