@@ -3,8 +3,6 @@
 local lg = love.graphics
 
 local Game = require 'Game'
---local Magnet = require('Magnet')
---local Ball = require('Ball')
 
 
 COLOUR_LIGHT_BLUE = {100, 149, 237}
@@ -16,8 +14,6 @@ SCREEN_WIDTH  = 1200
 SCREEN_HEIGHT = 720
 
 assets = {}
-local magnet
-local ball
 
 function love.load()
   assets["magnet_img"] = lg.newImage('assets/magnet.png')
@@ -42,37 +38,37 @@ function love.keypressed(key)
   end
 
   if key == 'down' then
-    magnet.dy = 16
+    Game.magnet.dy = 16
   end
 
   if key == 'up' then
-    magnet.dy = -16
+    Game.magnet.dy = -16
   end
 
   if key == 'left' then
-    magnet.dx = -16
+    Game.magnet.dx = -16
   end
 
   if key == 'right' then
-    magnet.dx = 16
+    Game.magnet.dx = 16
   end
 end
 
 function love.keyreleased(key)
   if key == 'down' then
-    magnet.dy = 0
+    Game.magnet.dy = 0
   end
 
   if key == 'up' then
-    magnet.dy = 0
+    Game.magnet.dy = 0
   end
 
   if key == 'left' then
-    magnet.dx = 0
+    Game.magnet.dx = 0
   end
 
   if key == 'right' then
-    magnet.dx = 0
+    Game.magnet.dx = 0
   end
 end
 
