@@ -20,8 +20,13 @@ end
 
 function love.update(dt)
   mag_xpos = mag_xpos + dx
+  if mag_xpos < 0 or mag_xpos > 1200 then
+     mag_xpos = mag_xpos % 1200
+  end
   mag_ypos = mag_ypos + dy
-
+  if mag_ypos < 0 or mag_ypos > 720 then
+     mag_ypos = mag_ypos % 720
+  end
 end
 
 function love.keypressed(key)
