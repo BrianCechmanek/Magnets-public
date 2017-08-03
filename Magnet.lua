@@ -24,5 +24,16 @@ function Magnet:draw()
 	love.graphics.draw(self.img, self.x_pos, self.y_pos)
 end
 
+function Magnet:update(dt)
+  self.x_pos = self.x_pos + self.dx
+  if self.x_pos < 0 or self.x_pos > 1200 then
+     self.x_pos = self.x_pos % 1200
+  end
+  self.y_pos = self.y_pos + self.dy
+  if self.y_pos < 0 or self.y_pos > 720 then
+     self.y_pos = self.y_pos % 720
+  end
+end
+
 
 return Magnet
