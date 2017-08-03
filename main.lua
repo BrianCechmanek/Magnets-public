@@ -83,3 +83,9 @@ function love.keyreleased(key)
     dx = 0
   end
 end
+
+--function love.mousepressed(x, y, button, istouch)
+--  if magnet:isNear(x, y) then
+--    magnet:grab()
+--  end
+--end
