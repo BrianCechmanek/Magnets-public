@@ -1,13 +1,14 @@
 local Magnet = require 'Magnet'
 local Ball   = require 'Ball'
+local Vector = require 'vec2'
 
 local Game = {}
 Game.__index = Game
 
 local DEFAULT_LEVEL = {
-  magnet_start = {x = 0, y = 0},
-  ball_start   = {x = 600, y = 300},
-  win_hole     = {x = 1000, y = 600}
+  magnet_start = Vector(0,0),
+  ball_start   = Vector(600, 300),
+  win_hole     = Vector(1000, 600)
 }
 
 Game.is_running = false

@@ -1,28 +1,26 @@
 -- ball v0.1
 -- authors: Brian Cechmanek, David Bergeron
+local Vector = require 'vec2'
 
 local Ball = {}
 Ball.__index = Ball
 
-function Ball.create(img, x_pos, y_pos)
+function Ball.create(img, x, y)
   local ball = {}
   setmetatable(ball, Ball)
   ball.img = img
-  ball.x_pos = x_pos
-  ball.y_pos = y_pos
-  ball.dx = 0
-  ball.dy = 0
+  ball.pos = Vector(x, y)
+  ball.vel = Vector(0,0)
   --ball.gravity = 1
   return ball
 end
 
 function Ball:draw()
-  love.graphics.draw(self.img, self.x_pos, self.y_pos)
+  love.graphics.draw(self.img, self.pos.x, self.y_pos)
 end
 
-function Ball:move(dx, dy)
-    self.x_pos = self.x_pos + dx
-    self.y_pos = self.y_pos + dy
+function Ball:move(delta_vec)
+  self.pos = self.pos + delta_vec
 end
 
 function Ball:update()
