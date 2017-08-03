@@ -11,7 +11,9 @@ SPRITE_SIZE = 64
 SCREEN_WIDTH  = 1200
 SCREEN_HEIGHT = 720
 
-local assets = {}
+assets = {}
+local magnet
+local ball
 
 function DrawBorder()
   love.graphics.setLineWidth(10)
@@ -28,12 +30,11 @@ function love.load()
   assets["ball_img"] = love.graphics.newImage('assets/ball.png')
   -- magnet = love.graphics.newImage('assets/magnet.png')
   ball = love.graphics.newImage('assets/ball.png')
+  magnet = Magnet.create(32, 32, assets["magnet_img"])
 end
 
 
-
 -- Game initialization here
-local magnet = Magnet.create(32, 32, assets["magnet_img"])
 
 
 function love.draw()
