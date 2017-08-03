@@ -4,7 +4,7 @@
 local Magnet = {}
 Magnet.__index = Magnet
 
-function Magnet.create(x_pos, y_pos, img)
+function Magnet.create(img, x_pos, y_pos)
 	local magnet = {}
 	setmetatable(magnet, Magnet)
 	magnet.img = img
@@ -15,14 +15,13 @@ function Magnet.create(x_pos, y_pos, img)
 	return magnet
 end
 
-function Magnet:move(dx, dy)
-    self.x_pos = self.x_pos + dx
-    self.y_pos = self.y_pos + dy
-end
-
 function Magnet:draw()
 	love.graphics.draw(self.img, self.x_pos, self.y_pos)
 end
 
+function Magnet:move(dx, dy)
+    self.x_pos = self.x_pos + dx
+    self.y_pos = self.y_pos + dy
+end
 
 return Magnet

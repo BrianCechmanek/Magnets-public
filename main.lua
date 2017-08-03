@@ -2,6 +2,7 @@
 -- Brian Cechmanek, David Bergeron
 
 local Magnet = require('Magnet')
+local Ball = require('Ball')
 
 COLOUR_LIGHT_BLUE = {100, 149, 237}
 COLOUR_GREY       = {119, 136, 153}
@@ -25,23 +26,17 @@ end
 
 function love.load()
   assets["magnet_img"] = love.graphics.newImage('assets/magnet.png')
-  print(assets.magnet_img)
-  print(table.getn(assets)) 
   assets["ball_img"] = love.graphics.newImage('assets/ball.png')
-  -- magnet = love.graphics.newImage('assets/magnet.png')
-  ball = love.graphics.newImage('assets/ball.png')
-  magnet = Magnet.create(32, 32, assets["magnet_img"])
+
+  magnet = Magnet.create(assets["magnet_img"], 32, 32)
+  ball = Ball.create(assets["ball_img"], 600, 360)
 end
-
-
--- Game initialization here
-
 
 function love.draw()
   love.graphics.clear(COLOUR_LIGHT_BLUE)
   DrawBorder()
   magnet:draw()
-  love.graphics.draw(ball, 600, 360)
+  ball:draw()
 end
 
 function love.update(dt)
