@@ -13,8 +13,8 @@ function love.load()
 end
 
 function love.draw()
-  love.graphics.draw(magnet, mag_xpos, mag_ypos)
   love.graphics.clear(COLOUR_LIGHT_BLUE)
+  love.graphics.draw(magnet, mag_xpos, mag_ypos)
   love.graphics.draw(ball, 600, 360)
 end
 
