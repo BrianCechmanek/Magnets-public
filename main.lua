@@ -39,19 +39,19 @@ function love.keypressed(key)
   end
 
   if key == 'down' then
-    Game.magnet.dy = 16
+    Game.magnet:move(0, 16)
   end
 
   if key == 'up' then
-    Game.magnet.dy = -16
+    Game.magnet:move(0, -16)
   end
 
   if key == 'left' then
-    Game.magnet.dx = -16
+    Game.magnet:move(-16, 0)
   end
 
   if key == 'right' then
-    Game.magnet.dx = 16
+    Game.magnet:move(16, 0)
   end
 end
 
