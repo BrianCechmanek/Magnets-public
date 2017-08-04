@@ -12,6 +12,7 @@ function Magnet.create(img, x, y)
   setmetatable(magnet, Magnet)
   magnet.id = 'magnet'
   magnet.img = img
+  magnet.rotation = 0
   magnet.pos = Vector(x, y)
   magnet.vel = Vector(0,0)
   magnet.is_static = true
@@ -20,7 +21,7 @@ function Magnet.create(img, x, y)
 end
 
 function Magnet:draw()
-	love.graphics.draw(self.img, self.pos.x, self.pos.y)
+	love.graphics.draw(self.img, self.pos.x, self.pos.y, self.rotation)
 end
 
 function Magnet:update(dt)

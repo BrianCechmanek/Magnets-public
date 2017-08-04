@@ -48,6 +48,11 @@ function Game:update(dt)
     if not obj.is_static then
       Game:sumForcesOnObj(forceAgents, obj)
     end
+
+    if obj.id == 'magnet' then
+      Game:magnetRotation(obj, ball)
+    end
+
     obj:update(dt)
   end
 
@@ -112,6 +117,13 @@ function Game:sumForcesOnObj(forceAgents, obj)
     sum = sum:add(unitVector)
   end
   obj.vel = sum
+end
+
+function Game:magnetRotation(obj)
+  local rot = 0
+  rot = math.atan((obj.pos.x-self.ball.pos.x),(obj.pos.y-self.ball.pos.y))/math.pi
+  print(rot)
+  obj.rotation = rot
 end
 
 return Game
