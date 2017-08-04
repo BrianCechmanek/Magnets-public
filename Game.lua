@@ -120,10 +120,8 @@ function Game:sumForcesOnObj(forceAgents, obj)
 end
 
 function Game:magnetRotation(obj)
-
   local rot = 0
   rot = math.atan2(  (obj.pos.x-self.ball.pos.x),(obj.pos.y-self.ball.pos.y)) % math.pi
-  print(rot)
   obj.rotation = rot
 end
 
