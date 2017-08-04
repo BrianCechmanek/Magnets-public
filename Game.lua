@@ -63,6 +63,13 @@ function Game:update(dt)
   self.num_ticks = self.num_ticks + 1
 end
 
+function Game:add(...)
+  local new_objs = {...}
+  for _, obj in ipairs(new_objs) do
+    table.insert(self.objects, obj)
+  end
+end
+
 function Game:drawObjects()
   for _, obj in ipairs(self.objects) do
     obj:draw()
@@ -80,12 +87,13 @@ function Game:drawMap()
   end
 end
 
-function Game:add(...)
-  local new_objs = {...}
-  for _, obj in ipairs(new_objs) do
-    table.insert(self.objects, obj)
-  end
+function Game:getTileAt(x, y)
+  local x = math.floor((x / OBJ_SIZE) + .5) + 1
+  local y = math.floor((y / OBJ_SIZE) + .5) + 1
+  print(x, y)
+  return self.map[y][x]
 end
+
 
 function Game:forceTable()
   for _, obj in ipairs(self.objects) do
@@ -143,6 +151,11 @@ function Game:magnetRotation(obj)
   local rot = 0
   rot = math.atan2(  (obj.pos.x-self.ball.pos.x),(obj.pos.y-self.ball.pos.y)) % math.pi
   obj.rotation = rot
+end
+
+local function round(val)
+  assert(val >= 0, 'Value must be greater than 0, got: ' .. val)
+  return math.floor(x + .5)
 end
 
 return Game

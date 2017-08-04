@@ -20,10 +20,27 @@ function Ball.create(img, x, y)
 end
 
 function Ball:draw()
-  love.graphics.draw(self.img, self.pos.x, self.pos.y)
+  love.graphics.draw(self.img, self.pos.x, self.pos.y, 0, 2, 2)
+end
+
+
+function Ball:wouldCollide()
+  local dest = self.pos + self.vel
+  local tile = Game:getTileAt(dest.x, dest.y)
+  if  tile == 0 then
+    return false
+  end
+  return tile:isSolid()
+end
+
+function Ball:stop()
+  self.vel = Vector(0,0)
 end
 
 function Ball:update()
+  if self:wouldCollide() then
+    self.vel = Vector(0,0)
+  end
   self.pos = self.pos + self.vel
   self.vel:limit(MAX_BALL_SPEED) -- Limit the ball velocity to our MAX_SPEED
 end

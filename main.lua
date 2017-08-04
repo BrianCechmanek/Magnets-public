@@ -16,7 +16,6 @@ assets = {}
 function LoadAssets()
   local files = love.filesystem.getDirectoryItems('assets')
   for _, file in ipairs(files) do
-    print('assets/'..file)
     assets[file] = lg.newImage('assets/' .. file)
   end
 end
@@ -61,6 +60,10 @@ function love.keypressed(key)
 
   if key == 'right' then
     Game.magnet:move(16, 0)
+  end
+
+  if key == 'space' then
+    Game.magnet:stop()
   end
 end
 

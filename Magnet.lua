@@ -5,7 +5,7 @@ local Vector = require 'vec2'
 local Magnet = {}
 Magnet.__index = Magnet
 
-local MAX_MAGNET_SPEED = 16
+local MAX_MAGNET_SPEED = 8
 
 function Magnet.create(img, x, y)
   local magnet = {}
@@ -37,6 +37,10 @@ end
 function Magnet:move(dx, dy)
     self.vel = self.vel + Vector(dx, dy)
     self.vel:limit(MAX_MAGNET_SPEED) -- Limit magnet velocity to our Max Speed
+end
+
+function Magnet:stop()
+  self.vel = Vector(0,0)
 end
 
 return Magnet
