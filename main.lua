@@ -9,14 +9,21 @@ COLOUR_LIGHT_BLUE = {100, 149, 237}
 COLOUR_GREY       = {119, 136, 153}
 
 SPRITE_SIZE = 64
-SCREEN_WIDTH  = 1200
-SCREEN_HEIGHT = 720
+SCREEN_WIDTH  = 1280
+SCREEN_HEIGHT = 768
 
 assets = {}
 
+function loadAssets()
+  local files = love.filesystem.getDirectoryItems('assets')
+  for _, file in ipairs(files) do
+    print('assets/'..file)
+    assets[file] = lg.newImage('assets/' .. file)
+  end
+end
+
 function love.load()
-  assets["magnet_img"] = lg.newImage('assets/magnet.png')
-  assets["ball_img"] = lg.newImage('assets/ball.png')
+  loadAssets()
   Game:start()
 end
 

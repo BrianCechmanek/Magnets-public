@@ -10,6 +10,7 @@ local MAX_BALL_SPEED = 48
 function Ball.create(img, x, y)
   local ball = {}
   setmetatable(ball, Ball)
+<<<<<<< HEAD
   ball.id= 'ball'
   ball.img = img
   ball.pos = Vector(x, y)
