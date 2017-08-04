@@ -26,8 +26,8 @@ function Game:start(level)
   local level   = level or DEFAULT_LEVEL
 
   
-  self.magnet   = Magnet.create(assets['magnet_img'], level.magnet_start.x, level.magnet_start.y)
-  self.ball     = Ball.create(assets['ball_img'], level.ball_start.x, level.ball_start.y)
+  self.magnet   = Magnet.create(assets['magnet.png'], level.magnet_start.x, level.magnet_start.y)
+  self.ball     = Ball.create(assets['ball.png'], level.ball_start.x, level.ball_start.y)
   self.win_hole = level.win_hole
 
   Game:add(self.magnet, self.ball)
