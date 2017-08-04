@@ -2,7 +2,6 @@ local Magnet = require 'Magnet'
 local Ball   = require 'Ball'
 local Level  = require 'Level'
 local Vector = require 'vec2'
-local Util = require 'Util'
 
 local Game = {}
 Game.__index = Game
