@@ -5,6 +5,8 @@
 
 
 #### Currently a 2-day hackathon to make a magnetic puzzle game. We use only Lua and the LOVE2D library. 
+![Initial Concept](docs/MagnetsFirstScreen.png)
+
 
 #### TODOS:
 
