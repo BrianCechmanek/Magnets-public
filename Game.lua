@@ -105,7 +105,7 @@ function Game:getTileAt(x, y)
 end
 
 function Game.inBounds(x, y)
-  return x >= 0 and x < 1280 and y >= 0 and y < 760
+  return x >= 0 and x < 1280 - OBJ_SIZE and y >= 0 and y < 768 - OBJ_SIZE
 end
 
 

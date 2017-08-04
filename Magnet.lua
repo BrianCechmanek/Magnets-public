@@ -21,7 +21,7 @@ function Magnet.create(img, x, y)
 end
 
 function Magnet:draw()
-	love.graphics.draw(self.img, self.pos.x, self.pos.y, self.rotation, 2)
+	love.graphics.draw(self.img, self.pos.x, self.pos.y, 0, 2)
 end
 
 function Magnet:update(dt)
