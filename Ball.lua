@@ -23,13 +23,9 @@ function Ball:draw()
   love.graphics.draw(self.img, self.pos.x, self.pos.y)
 end
 
-function Ball:move(dx, dy)
-  self.vel = self.vel + Vector(dx, dy)
-  self.vel:limit(MAX_BALL_SPEED) -- Limit the ball velocity to our MAX_SPEED
-end
-
 function Ball:update()
   self.pos = self.pos + self.vel
+  self.vel:limit(MAX_BALL_SPEED) -- Limit the ball velocity to our MAX_SPEED
 end
 
 return Ball

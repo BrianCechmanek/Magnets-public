@@ -40,8 +40,6 @@ end
 function Game:update(dt)
   for _, obj in ipairs(self.objects) do
     if not obj.is_static then
-      print("doing sumForces on: ")
-      print(obj.id)
       Game:sumForcesOnObj(forceAgents, obj)
     end
     obj:update(dt)
