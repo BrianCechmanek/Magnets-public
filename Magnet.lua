@@ -26,16 +26,11 @@ end
 
 function Magnet:update(dt)
   local dest = self.pos + self.vel
+  print(dest)
   if not Game.inBounds(dest.x, dest.y) or self:wouldCollide(dest) then
     self.vel = Vector(0,0)
   end
   self.pos = self.pos + self.vel
-  if self.pos.x < 0 or self.pos.y > 1200 then
-     self.pos.x = self.pos.x % 1200
-  end
-  if self.pos.y < 0 or self.pos.y > 720 then
-     self.pos.y = self.pos.y % 720
-  end
 end
 
 function Magnet:wouldCollide(dest)

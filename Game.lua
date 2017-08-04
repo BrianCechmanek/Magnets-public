@@ -87,15 +87,25 @@ function Game:drawMap()
   end
 end
 
+local function round(val)
+  assert(val >= 0, 'Value must be greater than 0, got: ' .. val)
+  return math.floor(x + .5)
+end
+
+local function clamp(x, min, max)
+  return x < min and min or (x > max and max or x)
+end
+
 function Game:getTileAt(x, y)
   local x = math.floor((x / OBJ_SIZE) + .5) + 1
   local y = math.floor((y / OBJ_SIZE) + .5) + 1
-  print(x, y)
+  x = clamp(x, 1, GAME_WIDTH)
+  y = clamp(y, 1, GAME_HEIGHT)
   return self.map[y][x]
 end
 
 function Game.inBounds(x, y)
-  return x >= 0 and x < 1280 and y >= 0 and y < 768
+  return x >= 0 and x < 1280 and y >= 0 and y < 760
 end
 
 
@@ -157,9 +167,5 @@ function Game:magnetRotation(obj)
   obj.rotation = rot
 end
 
-local function round(val)
-  assert(val >= 0, 'Value must be greater than 0, got: ' .. val)
-  return math.floor(x + .5)
-end
 
 return Game
