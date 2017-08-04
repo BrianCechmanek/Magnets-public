@@ -25,6 +25,10 @@ function Magnet:draw()
 end
 
 function Magnet:update(dt)
+  local dest = self.pos + self.val
+  if not Game.inBounds(dest.x, dest.y) or self:wouldCollide(dest) then
+    self.vel = Vector(0,0)
+  end
   self.pos = self.pos + self.vel
   if self.pos.x < 0 or self.pos.y > 1200 then
      self.pos.x = self.pos.x % 1200
@@ -32,6 +36,15 @@ function Magnet:update(dt)
   if self.pos.y < 0 or self.pos.y > 720 then
      self.pos.y = self.pos.y % 720
   end
+end
+
+function Magnet:wouldCollide(dest)
+  local tile = Game:getTileAt(dest.x, dest.y)
+  if tile == 0 then return false end
+  if tile:isSolid() then
+    return Game.isColliding(self.pos, dest)
+  end
+end
 end
 
 function Magnet:move(dx, dy)
