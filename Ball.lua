@@ -10,12 +10,12 @@ local MAX_BALL_SPEED = 48
 function Ball.create(img, x, y)
   local ball = {}
   setmetatable(ball, Ball)
+  ball.id= 'ball'
   ball.img = img
   ball.pos = Vector(x, y)
   ball.vel = Vector(0,0)
-
+  ball.is_static = false
   ball.is_solid = true
-  --ball.gravity = 1
   return ball
 end
 
@@ -29,6 +29,7 @@ function Ball:move(dx, dy)
 end
 
 function Ball:update()
+  self.pos = self.pos + self.vel
 end
 
 return Ball

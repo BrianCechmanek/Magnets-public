@@ -2,7 +2,7 @@
 -- Brian Cechmanek, David Bergeron
 local lg = love.graphics
 
-local Game = require 'Game'
+Game = require 'Game'
 
 
 COLOUR_LIGHT_BLUE = {100, 149, 237}

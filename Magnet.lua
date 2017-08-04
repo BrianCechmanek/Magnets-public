@@ -8,12 +8,15 @@ Magnet.__index = Magnet
 local MAX_MAGNET_SPEED = 48
 
 function Magnet.create(img, x, y)
-	local magnet = {}
-	setmetatable(magnet, Magnet)
-	magnet.img = img
+  local magnet = {}
+  setmetatable(magnet, Magnet)
+  magnet.id = 'magnet'
+  magnet.img = img
   magnet.pos = Vector(x, y)
   magnet.vel = Vector(0,0)
-	return magnet
+  magnet.is_static = true
+  magnet.forceStrength = 10 -- arbitrary k*Q strength for electric field at center for E= kQ/r^2
+  return magnet
 end
 
 function Magnet:draw()
