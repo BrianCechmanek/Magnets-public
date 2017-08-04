@@ -47,19 +47,19 @@ function love.keypressed(key)
   end
 
   if key == 'down' then
-    Game.magnet:move(0, 16)
+    Game.magnet:move(0, 8)
   end
 
   if key == 'up' then
-    Game.magnet:move(0, -16)
+    Game.magnet:move(0, -8)
   end
 
   if key == 'left' then
-    Game.magnet:move(-16, 0)
+    Game.magnet:move(-8, 0)
   end
 
   if key == 'right' then
-    Game.magnet:move(16, 0)
+    Game.magnet:move(8, 0)
   end
 
   if key == 'space' then

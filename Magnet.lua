@@ -16,7 +16,7 @@ function Magnet.create(img, x, y)
   magnet.pos = Vector(x, y)
   magnet.vel = Vector(0,0)
   magnet.is_static = true
-  magnet.forceStrength = 20000 -- arbitrary k*Q strength for electric field at center for E= kQ/r^2
+  magnet.forceStrength = 150000 -- arbitrary k*Q strength for electric field at center for E= kQ/r^2
   return magnet
 end
 
@@ -26,7 +26,6 @@ end
 
 function Magnet:update(dt)
   local dest = self.pos + self.vel
-  print(dest)
   if not Game.inBounds(dest.x, dest.y) or self:wouldCollide(dest) then
     self.vel = Vector(0,0)
   end
