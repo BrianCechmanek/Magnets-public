@@ -37,6 +37,7 @@ function Game:start(level_data)
   self.win_hole = level.win_hole
 
   Game:add(self.magnet, self.ball)
+  Game:forceTable()
 
   self.is_running = true
 end
@@ -44,6 +45,9 @@ end
 
 function Game:update(dt)
   for _, obj in ipairs(self.objects) do
+    if not obj.is_static then
+      Game:sumForcesOnObj(forceAgents, obj)
+    end
     obj:update(dt)
   end
 
@@ -74,12 +78,40 @@ function Game:add(...)
   end
 end
 
-function Game:setForce(name, value)
-  Game.forceAgents[name] = value
+function Game:forceTable()
+  for _, obj in ipairs(self.objects) do
+    Game.forceAgents[obj] = obj.forceStrength
+  end
+ end  
+
+function Game:setForce(name)
+  Game.forceAgents[name] = name.charge
 end
 
 function Game:removeForce(name)
   Game.forceAgents[name] = nil
+end
+
+function Game:sumForcesOnObj(forceAgents, obj)
+  --[[ Calculates the sum of all (vector) forces on the supplied object.
+       Loop through each force in Game.forceAgents, extracting 
+           force = {source.x_pos, source.y_pos, source.strength (k*Q)}
+           dist = sqrt((source.x_pos-obj.x_pos)^2 + (source.y_pos-obj.y_pos)^2)
+           force = unit vector of x-distance*magnitude/distance, ditto y    
+        add force Vector to object net force 
+  ]]
+  local sum = Vector(0,0)
+  local dist = 0
+  local magnitude = 0
+  local unitVector = Vector(0,0)
+
+  for agent, val in pairs(Game.forceAgents) do
+    dist = agent.pos:dist(obj.pos)
+    magnitude = val/(dist^2)
+    unitVector = Vector((agent.pos.x-obj.pos.x)*magnitude/dist, (agent.pos.y-obj.pos.y)*magnitude/dist)
+    sum = sum:add(unitVector)
+  end
+  obj.vel = sum
 end
 
 return Game
