@@ -5,6 +5,8 @@ local Vector = require 'vec2'
 local Ball = {}
 Ball.__index = Ball
 
+local BALL_SIZE = 64
+
 local MAX_BALL_SPEED = 48
 
 function Ball.create(img, x, y)
@@ -30,7 +32,9 @@ function Ball:wouldCollide()
   if  tile == 0 then
     return false
   end
-  return tile:isSolid()
+  if tile:isSolid() then
+    return Game.isColliding(self.pos, dest)
+  end
 end
 
 function Ball:stop()
@@ -38,11 +42,13 @@ function Ball:stop()
 end
 
 function Ball:update()
-  if self:wouldCollide() then
+  local dest = self.pos + self.vel
+  if not Game:inBounds(dest.x, dest.y) or self:wouldCollide() then
     self.vel = Vector(0,0)
   end
   self.pos = self.pos + self.vel
   self.vel:limit(MAX_BALL_SPEED) -- Limit the ball velocity to our MAX_SPEED
 end
+
 
 return Ball
