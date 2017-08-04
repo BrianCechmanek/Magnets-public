@@ -2,6 +2,7 @@ local Magnet = require 'Magnet'
 local Ball   = require 'Ball'
 local Level  = require 'Level'
 local Vector = require 'vec2'
+local Util = require 'Util'
 
 local Game = {}
 Game.__index = Game
@@ -120,8 +121,9 @@ function Game:sumForcesOnObj(forceAgents, obj)
 end
 
 function Game:magnetRotation(obj)
+
   local rot = 0
-  rot = math.atan((obj.pos.x-self.ball.pos.x),(obj.pos.y-self.ball.pos.y))/math.pi
+  rot = math.atan2(  (obj.pos.x-self.ball.pos.x),(obj.pos.y-self.ball.pos.y)) % math.pi
   print(rot)
   obj.rotation = rot
 end
