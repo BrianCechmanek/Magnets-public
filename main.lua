@@ -13,8 +13,7 @@ SCREEN_WIDTH  = 1280
 SCREEN_HEIGHT = 768
 
 assets = {}
-
-function loadAssets()
+function LoadAssets()
   local files = love.filesystem.getDirectoryItems('assets')
   for _, file in ipairs(files) do
     print('assets/'..file)
@@ -23,14 +22,14 @@ function loadAssets()
 end
 
 function love.load()
-  loadAssets()
+  LoadAssets()
   Game:start()
 end
 
 
 function love.draw()
   DrawBackground()
-  DrawBorder()
+  Game:drawMap()
   Game:drawObjects()
 end
 
@@ -92,3 +91,5 @@ function DrawBorder()
                           SCREEN_WIDTH  - (SPRITE_SIZE * 2),
                           SCREEN_HEIGHT - (SPRITE_SIZE * 2))
 end
+
+
