@@ -5,7 +5,7 @@ local Vector = require 'vec2'
 local Magnet = {}
 Magnet.__index = Magnet
 
-local MAX_MAGNET_SPEED = 48
+local MAX_MAGNET_SPEED = 16
 
 function Magnet.create(img, x, y)
   local magnet = {}

@@ -31,6 +31,9 @@ function love.draw()
   DrawBackground()
   Game:drawMap()
   Game:drawObjects()
+  if Game.victory == true then
+    love.graphics.print('WINNER WINNER  BABY YEAAAH', SCREEN_WIDTH/3, SCREEN_HEIGHT/2, 0, 3)
+  end
 end
 
 

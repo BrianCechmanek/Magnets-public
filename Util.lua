@@ -1,7 +1,7 @@
 local Util = {}
 Util.__index = Util
 
-function util.clamp(x, min, max)
+function Util.clamp(x, min, max)
   if x < min then
     return min
   elseif x > max then 
