@@ -65,7 +65,7 @@ function Game:drawMap()
     for j = 1, GAME_WIDTH do
       local tile = self.map[i][j]
       if tile ~= 0 then
-        tile:draw(j * 64, i * 64)
+        tile:draw((j-1) * 64, (i-1) * 64)
       end
     end
   end
