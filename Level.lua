@@ -53,11 +53,11 @@ function Level.build(level_data)
       end
 
       if obj_id == 'magnet' then
-        lvl.magnet_start = Vector(j * 64, i * 64)
+        lvl.magnet_start = Vector((j - 1) * 64, (i - 1) * 64)
       elseif obj_id == 'ball' then
-        lvl.ball_start = Vector(j * 64, i * 64)
+        lvl.ball_start = Vector((j - 1) * 64, (i - 1) * 64)
       elseif obj_id == 'goal' then
-        lvl.win_hole = Vector(j * 64, i * 64)
+        lvl.win_hole = Vector((j - 1) * 64, (i - 1) * 64)
       end
     end
   end

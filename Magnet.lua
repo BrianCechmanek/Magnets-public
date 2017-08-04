@@ -25,7 +25,7 @@ function Magnet:draw()
 end
 
 function Magnet:update(dt)
-  local dest = self.pos + self.val
+  local dest = self.pos + self.vel
   if not Game.inBounds(dest.x, dest.y) or self:wouldCollide(dest) then
     self.vel = Vector(0,0)
   end
@@ -44,7 +44,6 @@ function Magnet:wouldCollide(dest)
   if tile:isSolid() then
     return Game.isColliding(self.pos, dest)
   end
-end
 end
 
 function Magnet:move(dx, dy)

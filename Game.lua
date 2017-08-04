@@ -94,8 +94,8 @@ function Game:getTileAt(x, y)
   return self.map[y][x]
 end
 
-function Game:inBounds(x, y)
-  return x >= 0 and x <= 1280 and y >= 0 and y <= 768
+function Game.inBounds(x, y)
+  return x >= 0 and x < 1280 and y >= 0 and y < 768
 end
 
 

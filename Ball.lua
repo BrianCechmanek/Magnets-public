@@ -43,7 +43,7 @@ end
 
 function Ball:update()
   local dest = self.pos + self.vel
-  if not Game:inBounds(dest.x, dest.y) or self:wouldCollide() then
+  if not Game.inBounds(dest.x, dest.y) or self:wouldCollide() then
     self.vel = Vector(0,0)
   end
   self.pos = self.pos + self.vel
