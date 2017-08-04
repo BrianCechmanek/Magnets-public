@@ -9,6 +9,8 @@ Game.__index = Game
 local GAME_WIDTH  = 20
 local GAME_HEIGHT = 12
 
+local OBJ_SIZE = 64
+
 local DEFAULT_LEVEL = {
   magnet_start = Vector(0,0),
   ball_start   = Vector(600, 300),
@@ -16,6 +18,7 @@ local DEFAULT_LEVEL = {
 }
 
 Game.is_running = false
+Game.victory    = false
 Game.num_ticks  = 0
 Game.clock      = 0
 
@@ -55,6 +58,7 @@ function Game:update(dt)
 
     obj:update(dt)
   end
+  Game.checkForWin()
 
   self.num_ticks = self.num_ticks + 1
 end
@@ -87,7 +91,23 @@ function Game:forceTable()
   for _, obj in ipairs(self.objects) do
     Game.forceAgents[obj] = obj.forceStrength
   end
- end  
+end  
+
+-- Takes two position vectors as arguments.
+function Game.isColliding(a, b)
+    return (a.x <= b.x + OBJ_SIZE and
+          b.x <= a.x + OBJ_SIZE and
+          a.y <= b.y + OBJ_SIZE and
+          b.y <= a.y + OBJ_SIZE)
+
+end
+
+function Game.checkForWin()
+  if Game.isColliding(Game.ball.pos, Game.win_hole) then
+    Game.victory = true
+  end
+end
+
 
 function Game:setForce(name)
   Game.forceAgents[name] = name.charge
